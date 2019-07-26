@@ -1,9 +1,17 @@
+/*
+ * @Author: Sandy 
+ * @Date: 2019-07-26 22:05:30 
+ * @Last Modified by: Sandy
+ * @Last Modified time: 2019-07-26 23:14:19
+ */
+
+// Complexity: O(N + M)
+
 #include <algorithm>
 #include <cstdio>
 #include <cstring>
 
 using namespace std;
-
 const int N = 1e6 + 10;
 
 char s[N], t[N];
