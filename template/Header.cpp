@@ -28,6 +28,6 @@ typedef long double LD;
 typedef unsigned long long ULL;
 
 int main() {
-
+    
     return 0;
 }
