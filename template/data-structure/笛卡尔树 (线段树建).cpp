@@ -2,7 +2,7 @@
  * @Author: Sandy
  * @Date: 2019-07-28 15:09:23
  * @Last Modified by: Sandy
- * @Last Modified time: 2019-07-28 17:07:49
+ * @Last Modified time: 2019-07-28 20:48:57
  */
 
 // 线段树建笛卡尔树 O(NlogN)
@@ -111,7 +111,7 @@ int main() {
     }
 
 #ifdef _LOCAL
-    fprintf(stderr, "Time elpased: %d ms\n", int(1000.0 * clock() / CLOCKS_PER_SEC));
+    fprintf(stderr, "Time elapsed: %d ms\n", int(1000.0 * clock() / CLOCKS_PER_SEC));
 #endif
     return 0;
 }

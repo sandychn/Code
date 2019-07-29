@@ -2,7 +2,7 @@
  * @Author: Sandy
  * @Date: 2019-07-28 15:09:23
  * @Last Modified by: Sandy
- * @Last Modified time: 2019-07-28 20:15:54
+ * @Last Modified time: 2019-07-28 20:48:26
  */
 
 // 单调栈建笛卡尔树 O(N)
@@ -39,6 +39,7 @@ struct CartesianTree {
         int root;
         stack<int> st;
         for (int i = 1; i <= size; ++i) {
+            node[i].fa = node[i].ls = node[i].rs = 0;
             int j = 0;
             while (!st.empty() && input[st.top()].key > input[i].key) {
                 j = st.top();
@@ -46,7 +47,6 @@ struct CartesianTree {
             }
             if (st.empty()) {
                 root = i;
-                node[root].ls = node[root].rs = 0;
             } else {
                 node[st.top()].rs = i;
                 node[i].fa = st.top();
@@ -84,7 +84,7 @@ int main() {
     }
 
 #ifdef _LOCAL
-    fprintf(stderr, "Time elpased: %d ms\n", int(1000.0 * clock() / CLOCKS_PER_SEC));
+    fprintf(stderr, "Time elapsed: %d ms\n", int(1000.0 * clock() / CLOCKS_PER_SEC));
 #endif
     return 0;
 }
