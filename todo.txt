@@ -1,3 +1,7 @@
+* 待学知识
+    Dancing Links 数据结构舞蹈链
+
+
 * 补题
     Path
         http://acm.hdu.edu.cn/contests/contest_showproblem.php?pid=1005&cid=848
