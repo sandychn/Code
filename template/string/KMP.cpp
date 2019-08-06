@@ -44,7 +44,7 @@ int main() {
         calcNext(t, nxt, tLen);
         int ans = kmpSearch(s, t, sLen, tLen, nxt);
         if (ans > sLen) ans = 0;
-        printf("%d\n", --ans);
+        printf("%d\n", ans - 1);
     }
     return 0;
 }
