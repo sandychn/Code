@@ -1,8 +1,8 @@
 /*
  * @Author: Sandy 
  * @Date: 2019-08-08 22:13:05 
- * @Last Modified by:   Sandy 
- * @Last Modified time: 2019-08-08 22:13:05 
+ * @Last Modified by: Sandy
+ * @Last Modified time: 2019-08-09 01:16:05
  */
 
 #include <algorithm>
@@ -32,7 +32,7 @@ void initBase() {
 }
 
 ULL getHash(int first, int last) {  // 子串 [first, last] 的哈希值
-    return (h[last] - h[first - 1] * base[last - first + 1]);
+    return h[last] - h[first - 1] * base[last - first + 1];
 }
 
 int main() {
