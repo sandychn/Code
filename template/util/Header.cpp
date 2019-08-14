@@ -27,6 +27,16 @@ typedef long long LL;
 typedef long double LD;
 typedef unsigned long long ULL;
 
+#ifdef _LOCAL
+#define show(x) cerr << "[" << #x << ": " << x << "] (" << __LINE__ << ", in `" << __FUNCTION__ << "`)\n"
+struct Tester {
+    Tester() { freopen("sample.in", "r", stdin); }
+    ~Tester() { fprintf(stderr, "\nTime: %d ms\n", int(1000.0 * clock() / CLOCKS_PER_SEC)); }
+} _tester;
+#else
+#define show(x)
+#endif
+
 int main() {
     
     return 0;
