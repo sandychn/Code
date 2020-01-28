@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	select {}
 	fmt.Println("End")
 }
