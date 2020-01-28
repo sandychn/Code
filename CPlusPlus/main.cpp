@@ -1,85 +1,44 @@
-#include <bits/stdc++.h>
-
-using namespace std;
+#include "../LeetCode/leetcode_helper.hpp"
 
 class Solution {
    public:
-    int minDeletionSize(vector<string>& A) {
-        if (A.empty()) {
+    int findUnsortedSubarray(vector<int> &nums) {
+        int minVal = INT_MAX, maxVal = INT_MIN;
+        bool flag = false;
+
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] < nums[i - 1]) flag = true;
+            if (flag && nums[i] < minVal) minVal = nums[i];
+        }
+
+        if (!flag) { // already sorted.
             return 0;
         }
-        int len = A[0].size();
-        bool* isDeleted = new bool[len];
-        memset(isDeleted, false, sizeof(bool) * len);
-        queue<Node> q;
-        q.emplace(0, A.size() - 1, 0);
-        while (!q.empty()) {
-            int cnt = q.size();
-            while (cnt--) {
-                const Node fnt = q.front();
-                q.pop();
-                cout << fnt << endl;
-                char pre = 0;
-                Node changed(fnt.first, fnt.first, fnt.charIndex + 1);
-                bool flag = false;
-                for (int i = fnt.first; i <= fnt.last; i++) {
-                    char ch = A[i][fnt.charIndex];
-                    if (pre < ch) {
-                    } else if (pre == ch) {
-                        changed.last = i;
-                    } else {  // pre > ch
-                        isDeleted[fnt.charIndex] = true;
-                        changed = Node(fnt.first, fnt.last, fnt.charIndex + 1);
-                        if (changed.first != changed.last && changed.charIndex < len) {
-                            q.push(changed);
-                        }
-                        flag = true;
-                        break;
-                    }
-                    pre = ch;
-                }
-                if (!flag && changed.first != changed.last && changed.charIndex < len) {
-                    q.push(changed);
-                }
-            }
-        }
-        // cout.setf(ios::boolalpha);
-        // for (int i = 0; i < len; i++) {
-        //     cout << isDeleted[i] << ' ';
-        // }
-        // cout << endl;
-        int deleted = accumulate(isDeleted, isDeleted + len, 0);
-        delete[] isDeleted;
-        return deleted;
-    }
 
-   private:
-    struct Node {
-        int first, last, charIndex;
-        Node() {}
-        Node(int first, int last, int charIndex) : first(first), last(last), charIndex(charIndex) {}
-        friend ostream& operator<<(ostream& outs, const Node& node) {
-            outs << "{first:" << node.first << " last:" << node.last
-                 << " charIndex:" << node.charIndex << "}";
-            return outs;
+        flag = false;
+        for (int i = nums.size() - 2; i >= 0; i--) {
+            if (nums[i] > nums[i + 1]) flag = true;
+            if (flag && nums[i] > maxVal) maxVal = nums[i];
         }
-    };
+
+        int minLeftPos = 0, maxRightPos = nums.size() - 1;
+
+        while (minLeftPos < nums.size() && nums[minLeftPos] <= minVal) ++minLeftPos;
+        while (maxRightPos >= 0 && nums[maxRightPos] >= maxVal) --maxRightPos;
+
+        return maxRightPos - minLeftPos + 1;
+    }
 };
 
 int main() {
-    vector<string> A = {"doeeqiy", "yabhbqe", "twckqte"};
-    int result = Solution().minDeletionSize(A);
-    cout << "Return " << result << endl;
+    string line;
+    while (getline(cin, line)) {
+        vector<int> nums = stringToIntegerVector(line);
+
+        int ret = Solution().findUnsortedSubarray(nums);
+
+        string out = to_string(ret);
+        cout << out << endl;
+    }
+    return 0;
 }
-
-/*
-dbc
-bbc
-bcd
-aab
-aac
-
-1, 2, 3, 4, 5
-1; 2, 3; 4, 5
-
-*/
