@@ -39,5 +39,5 @@ func main() {
 
 	// 关闭x，让x可读
 	close(x)
-	time.Sleep(3 * time.Second)
+	time.Sleep(2 * time.Second)
 }
