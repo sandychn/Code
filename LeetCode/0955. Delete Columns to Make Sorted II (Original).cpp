@@ -1,5 +1,5 @@
 // Time  : 8 ms (94.59%)
-// Memory: 10.1 MB (22.82%)
+// Memory: 10 MB (22.82%)
 
 class Solution {
    public:
@@ -8,13 +8,13 @@ class Solution {
             return 0;
         }
         int len = A[0].size();
-        bool beforeIsDeleted = false; // 前一列是否被删除
         int deleted = 0;
         queue<Node> q;
         q.emplace(0, A.size() - 1);
-        queue<Node> lastNotDeleteQ = q;
+        queue<Node> backup = q;
         for (int currentCharId = 0; !q.empty() && currentCharId < len; ++currentCharId) {
             int cnt = q.size();
+            bool thisColumnDeleted = false;
             while (cnt--) {
                 const Node fnt = q.front();
                 q.pop();
@@ -25,11 +25,6 @@ class Solution {
                 for (int i = fnt.first; i <= fnt.last; i++) {
                     char ch = A[i][currentCharId];
                     if (pre > ch) {
-                        if (beforeIsDeleted) {
-                            q = lastNotDeleteQ;
-                        } else {
-                            q.emplace(fnt.first, fnt.last);
-                        }
                         flag = true;
                         break;
                     }
@@ -37,12 +32,12 @@ class Solution {
                 }
 
                 if (flag) {
-                    beforeIsDeleted = true;
+                    thisColumnDeleted = true;
                     ++deleted;
+                    q = backup;
                     break;
                 }
 
-                beforeIsDeleted = false;
                 Node changed(fnt.first, fnt.first);
                 pre = A[fnt.first][currentCharId];
                 for (int i = fnt.first; i <= fnt.last; i++) {
@@ -62,8 +57,8 @@ class Solution {
                     q.push(changed);
                 }
             }
-            if (!beforeIsDeleted) {
-                lastNotDeleteQ = q;
+            if (!thisColumnDeleted) {
+                backup = q;
             }
         }
         return deleted;

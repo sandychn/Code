@@ -1,3 +1,6 @@
+// Time  : 8 ms (96.83%)
+// Memory: 10.2 MB (14.35%)
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {

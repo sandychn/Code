@@ -1,4 +1,5 @@
-#include "../LeetCode/leetcode_header.hpp"
+// Time  : 0 ms (100.00%)
+// Memory: 10.2 MB (5.31%)
 
 class Solution {
    public:
@@ -29,18 +30,3 @@ class Solution {
         return pQueue.empty() && qQueue.empty();
     }
 };
-
-int main() {
-    string line;
-    while (getline(cin, line)) {
-        TreeNode* p = stringToTreeNode(line);
-        getline(cin, line);
-        TreeNode* q = stringToTreeNode(line);
-
-        bool ret = Solution().isSameTree(p, q);
-
-        string out = boolToString(ret);
-        cout << out << endl;
-    }
-    return 0;
-}

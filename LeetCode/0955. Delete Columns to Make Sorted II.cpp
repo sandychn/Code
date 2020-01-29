@@ -1,7 +1,6 @@
 // Time  : 4 ms (100.00%)
 // Memory: 9.6 MB (36.95%)
 
-
 class Solution {
    public:
     int minDeletionSize(vector<string>& A) {

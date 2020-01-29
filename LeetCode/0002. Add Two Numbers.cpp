@@ -1,3 +1,6 @@
+// Time  : 16 ms (98.19%)
+// Memory: 10.5 MB (6.41%)
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
