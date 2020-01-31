@@ -147,7 +147,7 @@ string integerVectorToString(vector<int> list, int length = -1) {
     }
 
     string result;
-    for(int index = 0; index < length; index++) {
+    for (int index = 0; index < length; index++) {
         int number = list[index];
         result += to_string(number) + ", ";
     }
