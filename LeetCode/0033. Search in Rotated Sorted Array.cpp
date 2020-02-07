@@ -1,5 +1,5 @@
-// Time  : 4 ms (90.69%)
-// Memory: 8.9 MB (6.82%)
+// Time  : 0 ms (100.00%)
+// Memory: 9 MB (5.16%)
 
 class Solution {
 public:
@@ -17,6 +17,7 @@ public:
                 q <<= 1;
             }
         }
+
         // nums[p] is the biggest value in nums.
         int l, r;
         if (target >= nums[0]) { // the target's index is in [0, p].
