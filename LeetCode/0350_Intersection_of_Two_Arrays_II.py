@@ -3,12 +3,14 @@ class Solution:
         nums1.sort()
         nums2.sort()
         result = []
-        i = 0
-        for val in nums1:
-            while i < len(nums2) and val >= nums2[i]:
-                if not result or result[-1] != nums2[i]:
-                    result.append(nums2[i])
+        i, j = 0, 0
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] < nums2[j]:
                 i += 1
-            if not result or result[-1] != val:
-                result.append(val)
+            elif nums1[i] == nums2[j]:
+                result.append(nums1[i])
+                i += 1
+                j += 1
+            else:
+                j += 1
         return result
