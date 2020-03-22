@@ -1,7 +1,7 @@
 // a[]中>=val的最小位置
 int lowerBound(int* a, int l, int r, int val) {
     while (l < r) {
-        int mid = (l + r) >> 1;
+        int mid = ((unsigned int)(l + r)) >> 1; // 逻辑右移
         if (a[mid] <= val) {
             r = mid;
         } else {
@@ -14,7 +14,7 @@ int lowerBound(int* a, int l, int r, int val) {
 // a[]中<=val的最大位置
 int upperBound(int* a, int l, int r, int val) {
     while (l < r) {
-        int mid = (l + r + 1) >> 1;
+        int mid = ((unsigned int)(l + r + 1)) >> 1; // 逻辑右移
         if (a[mid] <= val) {
             l = mid;
         } else {
