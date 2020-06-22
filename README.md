@@ -1,4 +1,3 @@
-# New Code
+# Programming Contest Practice
 
-Code repository
-
+This repository keeps some source files for my programming contest practicing.
